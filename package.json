@@ -4,18 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": 
-    "npx tailwindcss -i ./css/input.css -o ./css/style.css --watch --poll",
+    "dev": "npx tailwindcss -i ./css/input.css -o ./css/style.css --watch --poll",
     "build": "npx tailwindcss -i ./css/input.css -o ./css/style.css --minify",
     "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-
-  
   "devDependencies": {
-
     "@eslint/js": "^9.21.0",
     "eslint": "^9.21.0",
     "globals": "^16.0.0",
@@ -23,7 +19,7 @@
     "tailwindcss": "^3.4.12"
   },
   "lint-staged": {
-    "*.{js,css,md,html}": "prettier --write",
+    "*.{js,css,md,html,json}": "prettier --write",
     "*.js": "eslint --cache --fix"
   }
 }

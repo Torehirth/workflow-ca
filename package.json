@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "npx tailwindcss -i ./css/input.css -o ./css/style.css --watch --poll",
     "build": "npx tailwindcss -i ./css/input.css -o ./css/style.css --minify",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,8 @@
     "eslint": "^9.21.0",
     "globals": "^16.0.0",
     "prettier": "^3.5.3",
-    "tailwindcss": "^3.4.12"
+    "tailwindcss": "^3.4.12",
+    "vitest": "^3.0.7"
   },
   "lint-staged": {
     "*.{js,css,md,html,json,yml}": "prettier --write",

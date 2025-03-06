@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("registration", () => {
   test("successful registration shows success message", async ({ page }) => {
-    await page.route("*/**/holidaze/auth/register", (route) =>
+    await page.route("*/**/auth/register", (route) =>
       route.fulfill({
         status: 200,
         json: { name: "Test", email: "test@noroff.no" },
@@ -10,7 +10,7 @@ test.describe("registration", () => {
     );
 
     // Go to register page
-    await page.goto("/auth/register");
+    await page.goto("/register/");
 
     // Fill the form
     await page.locator('input[name="name"]').fill("Test User");
@@ -22,18 +22,18 @@ test.describe("registration", () => {
 
     // Check for success message
     await expect(page.locator("#message-container")).toContainText(
-      "Registration successful",
+      "Registration successful!",
     );
   });
 
   test("failed registration shows error message", async ({ page }) => {
-    await page.route("*/**/holidaze/auth/register", (route) =>
+    await page.route("*/**/auth/register", (route) =>
       route.fulfill({
         status: 400,
         json: { message: "Registration failed" },
       }),
     );
-    await page.goto("/auth/register");
+    await page.goto("/register/");
 
     // Fill the form with an email that will trigger a failure
     await page.locator('input[name="name"]').fill("Test User");
@@ -44,7 +44,7 @@ test.describe("registration", () => {
 
     // Check for error message
     await expect(page.locator("#message-container")).toContainText(
-      "Registration failed",
+      "Sorry, sign up failed",
     );
   });
 });

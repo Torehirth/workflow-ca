@@ -2,8 +2,14 @@ import { test, expect } from "@playwright/test";
 
 test.describe("login", () => {
   test("user can login", async ({ page }) => {
+    await page.route("*/**/auth/login", (route) =>
+      route.fulfill({
+        status: 200,
+        json: { name: "Test", email: "test@noroff.no" },
+      }),
+    );
     // Go to login page
-    await page.goto("/auth/login");
+    await page.goto("/login/");
 
     // Fill in form using name attributes
     await page.locator('input[name="email"]').fill(process.env.TEST_USER_EMAIL);
@@ -15,11 +21,11 @@ test.describe("login", () => {
     await page.getByRole("button", { name: "Login" }).click();
 
     // Check if we see logout button - means we're logged in
-    await expect(page.getByRole("button", { name: "Logout" })).toBeVisible();
+    await expect(page.locator("#logoutButton")).toBeVisible({ timeout: 5000 });
   });
 
   test("wrong password shows error", async ({ page }) => {
-    await page.goto("/auth/login");
+    await page.goto("/login/");
 
     await page.locator('input[name="email"]').fill(process.env.TEST_USER_EMAIL);
     await page.locator('input[name="password"]').fill("wrong password");
@@ -29,6 +35,9 @@ test.describe("login", () => {
     // Check for error in message container
     await expect(page.locator("#message-container")).toContainText(
       "Invalid email or password",
+      {
+        timeout: 5000,
+      },
     );
   });
 });

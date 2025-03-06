@@ -21,7 +21,7 @@ test.describe("login", () => {
     await page.getByRole("button", { name: "Login" }).click();
 
     // Check if we see logout button - means we're logged in
-    await expect(page.locator("#logoutButton")).toBeVisible({ timeout: 5000 });
+    await expect(page.locator("#logoutButton")).toBeVisible();
   });
 
   test("wrong password shows error", async ({ page }) => {
@@ -35,9 +35,6 @@ test.describe("login", () => {
     // Check for error in message container
     await expect(page.locator("#message-container")).toContainText(
       "Invalid email or password",
-      {
-        timeout: 5000,
-      },
     );
   });
 });

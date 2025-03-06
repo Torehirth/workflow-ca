@@ -7,8 +7,11 @@
     "dev": "npx tailwindcss -i ./css/input.css -o ./css/style.css --watch --poll",
     "build": "npx tailwindcss -i ./css/input.css -o ./css/style.css --minify",
     "prepare": "husky install",
-    "test": "vitest",
-    "start": "live-server --port=5500"
+    "unit": "vitest",
+    "e2e": "npx playwright test",
+    "e2e:ui": "npx playwright test --ui",
+    "e2e:headed": "npx playwright test --headed",
+    "e2e:debug": "npx playwright test --debug"
   },
   "keywords": [],
   "author": "",

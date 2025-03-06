@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test.describe("login", () => {
   test("user can login", async ({ page }) => {
     // Go to login page
-    await page.goto("/auth/register");
+    await page.goto("/auth/login");
 
     // Fill in form using name attributes
     await page.locator('input[name="email"]').fill(process.env.TEST_USER_EMAIL);

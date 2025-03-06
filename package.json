@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "live-server --port=5500",
     "dev": "npx tailwindcss -i ./css/input.css -o ./css/style.css --watch --poll",
     "build": "npx tailwindcss -i ./css/input.css -o ./css/style.css --minify",
     "prepare": "husky install",

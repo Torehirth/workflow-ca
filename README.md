@@ -106,4 +106,4 @@ The `.env` file is ignored in version control. Use `.env.example` as a reference
 
 ## Contact
 
-Message me with any queries - [My LinkedIn page](https://www.linkedin.com/torehirth)
+Message me with any queries - [My LinkedIn page](www.linkedin.com/in/torehirth)

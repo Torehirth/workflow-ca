@@ -33,6 +33,14 @@ test.describe("login", () => {
     await page.getByRole("button", { name: "Login" }).click();
 
     // Check for error in message container
+    await page.waitForFunction(() => {
+      // Wait until the text appears before running the expect function
+      const message = document.querySelector("#message-container");
+      return (
+        message && message.textContent.includes("Invalid email or password")
+      );
+    });
+
     await expect(page.locator("#message-container")).toContainText(
       "Invalid email or password",
     );

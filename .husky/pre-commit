@@ -1,4 +1,4 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+# . "$(dirname "$0")/_/husky.sh" (These two lines is for older versions of Husky, they will fail in Husky v10->)
 
-npx lint-staged
+npx lint-staged # This is the only line you need for Husky v10->!
